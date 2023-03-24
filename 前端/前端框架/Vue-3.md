@@ -1,0 +1,3 @@
+- `ref`, `reactive` 的差異為何？
+- `setup()` 的用途是甚麼？
+- `<script setup>` 的優點
