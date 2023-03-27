@@ -103,6 +103,28 @@
     - [我知道你懂 Event Loop，但你了解到多深？](https://yeefun.github.io/event-loop-in-depth/)
     - [從「為什麼不能用這個函式」談執行環境（runtime）](https://blog.huli.tw/2022/02/09/javascript-runtime/)
 
+- function declaration(陳述式), function expression(表達式) 差別？
+  - function hoisting
+  - 
+    ```javascript
+    // 函式宣告（Function Declaration）
+    function sum(x, y) {
+      return x + y;
+    }
+
+    // 函式表示式（Function Expression）
+    let mySum = function (x, y) {
+      return x + y;
+    };
+    ```
+  - 順帶複習的概念
+    - By default, functions return `undefined`.  
+      To return any other value, the function must have a return statement that specifies the value to return.
+    - The typeof operator in JavaScript returns `"function"` for functions.
+  - 參考文章
+    - [function declaration - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+    - [function expression - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function)
+    - [JavaScript Function Definitions - w3schools](https://www.w3schools.com/js/js_function_definition.asp)
 
 -----------------------------------------------------------------------------------------------------------------
 # 待寫答案
@@ -124,15 +146,7 @@
 -----------------------------------------------------------------------------------------------------------------
 # 題庫
 
-- 什麼是 event loop？
-
-- 甚麼是 debounce？
-
-- debounce 和 throttle 的差異為何？
-
 - == 和 === 的差異為何？
-
-- function declaration(陳述式), function expression(表達式) 差別？
 
 - By value vs by reference
 
