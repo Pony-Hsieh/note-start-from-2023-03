@@ -241,6 +241,69 @@
     - [[JS] 深入淺出 JavaScript 閉包（closure）](https://pjchender.dev/javascript/js-closure/)
     - [為什麼我們需要閉包(Closure)？它是冷知識還是真有用途？](https://nissentech.org/why-do-we-need-closure/)
 
+- 記憶體管理
+  - 像 C 語言一樣低階的語言，都有著如 malloc() 跟 free() 的低階函式控管記憶體權限
+  - 記憶體生命週期
+    - 不論是哪種程式語言，記憶體生命週期(運作方式)幾乎總是一樣：
+      1. 配置程式需要的記憶體空間
+      2. 使用配置到的記憶體空間(讀，寫)
+      3. 當不再使用時釋放已被配置的記憶體空間
+
+      在所有語言中，第二點的(運作方式)是確定的。  
+      第一點以及最後一點在低階語言中是確定的，但是在高階語言如 JavaScript 則通常是不明確的。
+  - 為了不讓開發者對配置感到困擾，JavaScript 會在宣告值的同時完成記憶體配置
+  - 當我們談論到記憶體管理，問題通常出現在這個階段。  
+    **最困難的工作是尋找「已不再被使用的記憶體配置空間」。**  
+    低階語言需要開發者自己決定，當程序執行道某個地方時，是否有已被分配的記憶體不再需要。並手動將其釋放。  
+    高階的語言 (e.g. JavaScript) 有一個叫作垃圾回收器(garbage collector) 的系統，他的工作是追蹤記憶體分配的使用情況，以便自動釋放一些不再被使用的記憶體空間。但這個垃圾回收器只能「儘量」做到自動釋放記憶體空間，因為判斷記憶體空間是否要繼續被使用，這件事是「不可判定(undecidable)」的。  
+    (為何是不可判定的？)
+  - 回收機制的演算法主要概念是 reference。  
+    在記憶體管理的 context　中，如果一個物件可以訪問到另一個物件(無論是隱式或顯式)，即稱為該物件參考另一個物件。例如：JavaScript 的物件都有參考該物件的原型(prototype) (隱式參考) 以及該物件的屬性值 (顯式參考)。
+  - GC 演算法實作
+    1. Reference-counting garbage collection 是一個最務實的垃圾回收演算法。  
+      這個演算法將原本 "這個物件再也不會被使用" 的廣泛定義縮減到 "**沒有其他任何物件參考它**"。   
+      如果一個物件不再被任何物件參考，它將被視為可回收的記憶體。
+    2. 標記和清理演算法
+      這個演算法將原本 "這個物件再也不會被使用" 的廣泛定義縮減到 "**這個物件不可到達**"。  
+      **截至 2012 年，所有現代瀏覽器都使用標記和清理演算法**。  
+      在過去的幾年裡，JavaScript 垃圾回收領域的所有改進都是對這個演算法的實作與改進，但並未改進垃圾回收演算法本身，也沒有縮減垃圾的定義 「這個物件再也不會被使用」。  
+
+  - 參考文章
+    - [記憶體管理 - MDN 繁體中文](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Memory_Management)
+
+- JS 中有哪些錯誤類型？
+  1. SyntaxError(語法錯誤)  
+     - 錯誤的使用已經預定義的語法
+  2. TypeError(類型錯誤)  
+     - 值不是預期數據類型
+     - 調用無效方法
+  3. ReferenceError(引用錯誤)  
+     - 找不到變數的引用
+     - 在變數作用域範圍之外使用變數
+     - 使用未聲明的變數
+     - 在暫時性死區期間使用變數
+  4. RangeError(範圍錯誤)  
+     - 將變數設置在其限定的範圍之外
+     - 將值傳遞給超出範圍的方法
+     - 調用一個不會結束的遞歸函式
+  5. URIError(URI 錯誤)  
+     - 當 URI 的編碼和解碼出現問題
+       JavaScript 中的 URI 操作函式包括：`decodeURI`、`decodeURIComponent` 等。如果使用了錯誤的參數(無效字符)，就會拋出URIError。
+  6. EvalError(Eval 錯誤)  
+     - 當 `eval()` 函數調用發生錯誤  
+       不過目前的 JavaScript 引擎或 ECMAScript 規範不再拋出此錯誤。但是，為了向後兼容，它仍然是存在的。
+  7. InternalError(內部錯誤)  
+     - 當 JavaScript 引擎上的工作負載突然激增時，會拋出此錯誤。  
+       當有太多數據需要處理時，工作量就會激增，比如調用的函式包含過多的遞歸或者過多的 switch case 時(為什麼過多的 switch case 會導致工作量激增？)。
+
+  注意： 現代JavaScript 中不會拋出EvalError 和InternalError 錯誤。
+  - 參考文章
+    - [Error - MDN 繁體中文](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Error)
+    - [你應該知道的七種JavaScript 錯誤類型](https://www.51cto.com/article/709279.html)
+    - [js 中有哪些內置錯誤類型？](https://juejin.cn/post/7020321066664853540)
+    - [從ES6開始的JavaScript學習生活 - 錯誤與例外處理](https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part3/error.html)
+
+
 -----------------------------------------------------------------------------------------------------------------
 # 待寫答案
 

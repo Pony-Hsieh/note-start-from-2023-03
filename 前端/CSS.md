@@ -2,6 +2,27 @@
 
 -----------------------------------------------------------------------------------------------------------------
 # 題庫
+- 為什麼會使用 `translate()` 的效能會優於 `position: absolute;`？
+  - Reflow & Repaint & Compositing
+    - Reflow(回流)
+      - 瀏覽器為了重新渲染部分或全部的 document 而重新計算 Render Tree 中元素的物理屬性，如位置、大小的過程。
+      - 觸發條件為改變一些元素的幾何樣式，例如 height、width、margin 或是排列的方式等等。
+    - Repaint(重繪)
+      - 將計算結果轉為實際的像素，畫到畫面上。
+      - 改動元素的顏色、背景圖等不需要重新計算頁面元素 layout 的樣式
+    - Compositing(合成)
+      - `transform`, `opactity`
+      - 更改一些不需要 Reflow 與不需要 Repaint 的屬性，這種改變方式是效率最好的。  
+        除了因為它只需要做合成以外，還有一個重點是 "合成的運作不是在 Main Thread 進行的，而是在 Compositor Thread 與 Raster Thread，因此不會佔用 Main Thread 資源"，這也是為什麼要做 CSS 動畫會建議使用 transform 的原因。
+    - 如果觸發了渲染流程的某個階段，那麼其之後的階段也都會被觸發  
+      不同的改變樣式的方式，會觸發不同渲染流程，因此也是效能優化的一個方向
+      ![](https://i.imgur.com/Ko9shBl.png)
+  - 參考文章
+    - [Day08 X 瀏覽器架構演進史 & 渲染機制](https://ithelp.ithome.com.tw/articles/10270187)
+    - [Stick to Compositor-Only Properties and Manage Layer Count](https://web.dev/stick-to-compositor-only-properties-and-manage-layer-count/)
+    - [渲染流程：HTML、CSS和JavaScript是如何變成頁面的?](https://pcaaron.github.io/pages/fe/chrome/drawing.html)
+    - [渲染頁面：瀏覽器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
+
 - 回流 (Reflow) 和重繪 (Repaint) 是什麼？如何優化？
 
 - BFC(Block Formatting Context) 是甚麼？
@@ -11,4 +32,13 @@
 
 - 有什麼方法來隱藏網頁的內容？
 
-- 為什麼會使用 `translate()` 的效能會優於 `position: absolute;`？
+-----------------------------------------------------------------------------------------------------------------
+# 轉貼文章
+- [How CSS works](https://developer.mozilla.org/zh-TW/docs/Learn/CSS/First_steps/How_CSS_works)
+
+- [【Web】瀏覽器如何繪製網頁？探討 DOM、CSSOM 與渲染（翻譯）](https://medium.someone.tw/web-%E7%80%8F%E8%A6%BD%E5%99%A8%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BD%E7%B6%B2%E9%A0%81-%E6%8E%A2%E8%A8%8E-dom-cssom-%E8%88%87%E6%B8%B2%E6%9F%93-%E7%BF%BB%E8%AD%AF-e9ba8c2be451)
+  > 對於某些 HTML 元素，開發者與瀏覽器可能都沒有明確定義 CSS 的屬性（例如display）而這些屬性就會被預設為 W3C CSS 標準中所標示的預設值；在這些預設值當中，某些屬性的運作會遵循 W3C 文件的標示，採用繼承（inheritance）的規則。
+
+  > 如果我們將元素設定為visibility:hidden或是opacity:0，這些元素因為仍然在畫面中佔有空間，因此會被包含在 render tree 當中。
+
+- [瀏覽器解析CSS 樣式的過程](https://blog.fundebug.com/2019/04/01/how-does-browser-parse-css/)
