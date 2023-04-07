@@ -1,8 +1,9 @@
 ## 相關問題
-- 為什麼 Vue 能透過 Proxy 實現雙向綁定？
+- 為什麼 Vue 能透過 `Object.defineProperty` 實現雙向綁定？
+  雙向綁定甚麼？
+- 為什麼 Vue 能透過 `Proxy` 實現雙向綁定？
   雙向綁定甚麼？
 - defineProperty 與 Proxy 相比，各有甚麼優缺點？
-
 
 ## Proxy
 - 是甚麼？
@@ -37,7 +38,45 @@
 - Proxy 延伸概念
 Reflect
 
-- 參考文章
+## defineProperty
+- `Object.defineProperty(obj, prop, descriptor)`
+  - 參數
+    1. obj  
+      The object on which to define the property.
+    2. prop  
+      A string or Symbol specifying the key of the property to be defined or modified.
+    3. descriptor  
+      The descriptor for the property being defined or modified.
+  - 回傳值：The object that was passed to the function, with the specified property added or modified.
+- 物件內的屬性描述器（Property descriptor）主要有兩種
+  1. 資料描述器（data descriptor）
+    - 
+  2. 訪問描述器（accessor descriptor）
+    - a property described by a getter-setter pair of functions
+  3. 
+
+  資料描述器（data descriptor）是可以選擇能否覆寫的屬性。訪問描述器（accessor descriptor） is a property described by a getter-setter pair of functions. A descriptor must be one of these two flavors; it cannot be both.
+  1. writable：是否可以被覆寫
+     - true: 可以被覆寫
+     - false: 不能被覆寫(預設)
+  2. enumerable：是否可以被枚舉  
+     使用 for...in 或 Object.keys()
+     - true: 可以被枚舉
+     - false: 不能被枚舉(預設)
+  3. value：值可以是任意類型的值
+     - undefined(預設)
+  4. configurable：是否可以刪除目標屬性，或是否可以再次修改屬性的特性（writable, enumerable, configurable）。
+     - true: 可以被刪除或可以重新設置特性
+     - false: 不能被可以被刪除或不可以重新設置特性(預設)
+  
+  - 訪問描述器（accessor descriptor）
+
+  
+
+## 參考文章
+- defineProperty
+  - [defineProperty - MDN 繁體中文](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+- Proxy
   - [Proxy - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy)
   - [ES6 系列之 defineProperty 与 proxy](https://juejin.cn/post/6844903710410162183)
   - [JS代理](https://juejin.cn/post/7212918899867353145)
@@ -48,3 +87,5 @@ Reflect
   - [JavaScript Proxy API](https://medium.com/@vx3012564897/javascript-proxy-api-69a37d531a48)
   - [Proxy and Reflect](https://javascript.info/proxy)
   - [Vue3 解構賦值失去響應式引發的思考](https://blog.csdn.net/qq_41581588/article/details/126069105)
+  - [面試官：說說你對發布訂閱、觀察者模式的理解？區別？](https://vue3js.cn/interview/design/Observer%20%20Pattern.html)
+  - [理解【觀察者模式】和【發布訂閱】的區別](https://juejin.cn/post/6978728619782701087)
