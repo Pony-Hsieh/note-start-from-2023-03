@@ -1,5 +1,26 @@
 # 已開始找答案
 
+- js 的變數有哪些類型？
+  1. Primitive (primitive value, primitive data type)
+     1. string
+     2. number
+     3. bigint(ES 10)
+     4. boolean
+     5. `undefined`
+     6. symbol(ES 6)
+     7. `null`
+  2. Object
+     1. Object
+     2. Array
+     3. Date
+     4. RegExp
+     5. Function
+  - 參考文章
+    - [Primitive - MDN 英文](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)
+    - [JavaScript 的基本類型和引用類型](https://cloud.tencent.com/developer/article/1840248)
+    - [JavaScript 深入了解基本类型和引用类型的值](https://www.runoob.com/w3cnote/javascript-basic-types-and-reference-types.html)
+    - [原始類型的方法](https://zh.javascript.info/primitives-methods)
+
 - 什麼是 scope(作用域)？
   - 依據 mdn 的說法，
     > The scope is the current context of execution in which values and expressions are "visible" or can be referenced.  
@@ -56,22 +77,27 @@
     - 如何監控？
     - 事件執行的優先序為何？
   - 回答下列問題，可以更深刻的理解 event loop
-    - 為什麼 JavaScript 會選擇使用 single threaded？  
+    - 為什麼 JavaScript 會選擇使用 single thread？  
       當初 JavaScript 是為了在瀏覽器上運作，和使用者互動的腳本語言。  
       由於 Javascript 需要操作 DOM，並且將 DOM 正確地繪製在瀏覽器上。一旦有多執行緒，就必須考慮到不同 thread 同時存取同一變數的情形，也會讓情況變得更加複雜。  
       例如：如果有兩個以上的 thread 同時修改 DOM 怎麼辦？  
-      為了避免不必要的複雜性，所以選擇 single threaded。
+      為了避免不必要的複雜性，所以選擇 single thread。
+    - single thread 有甚麼特點？
+      - 優點
+        - 簡單，不需要考慮併發問題
+      - 缺點
+        - 當有一個任務耗時很長，後續的任務就必須等待，此時便造成了阻塞(blocking)，用戶瀏覽的畫面便會卡住
     - macrotask, microtask 各有哪些？
       - 可以記 microtask 就好，因為比較少XD
       - macrotask
         1. 從 `<script src="...">` 外部下載的 script
-      	2. 各種 Web APIs，例如 setTimeout, setInterval 的 callback function
-      	3. DOM event handlers，例如 mousemove event 的 callback function handler
-      	4. ajax callback function
-        5. I/O(甚麼是 I/O？)
-        6. 事件(甚麼事件？)
-        7. postMessage
-        8. MessageChannel
+      	1. 各種 Web APIs，例如 setTimeout, setInterval 的 callback function
+      	2. DOM event handlers，例如 mousemove event 的 callback function handler
+      	3. ajax callback function
+        2. I/O(甚麼是 I/O？)
+        3. 事件(甚麼事件？)
+        4. postMessage
+        5. MessageChannel
       - microtask
         1. Promise .then/catch/finally 中的 callback function
         2. queueMicrotask(func) 中的 func
@@ -85,6 +111,7 @@
         3. 若 microtask 在執行過程中產生了新的 microtask，則繼續執行 microtask 直到 microtask queue 為空
         4. 回到 macrotask 中進行下一輪循環
   - 單點知識點
+    - Event Loop 嚴格來說並非 JavaScript 本身的機制，而是 JavaScript 運行環境(runtime)的機制(runtime 通堂是 瀏覽器或是 Node.js)。
     - 不同類型的 macrotask，其處理優先順序，並沒有保證誰先觸發誰就先執行，這都還是要看瀏覽器如何實作。
     - 在單次的 event loop 中，最多只處理一項 macrotask，但是所有 microtask 都會被處理完畢(見上方圖解的 is microtask queue empty? 的部分)。
   - 視覺化理解 call stack
@@ -102,6 +129,7 @@
     - [【前端進階】深入淺出瀏覽器事件循環【內附練習題】](https://juejin.cn/post/6880419772127772679)
     - [我知道你懂 Event Loop，但你了解到多深？](https://yeefun.github.io/event-loop-in-depth/)
     - [從「為什麼不能用這個函式」談執行環境（runtime）](https://blog.huli.tw/2022/02/09/javascript-runtime/)
+    - [[筆記]-JavaScript Event Loop是什麼?Event Loop的3個重點](https://jianline.com/javascript-event-loop/)
 
 - function declaration(陳述式), function expression(表達式) 差別？
   - function hoisting

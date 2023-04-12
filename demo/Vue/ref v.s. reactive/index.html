@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ref v.s. reactive</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.prod.min.js"
+    integrity="sha512-Wn/yBJ4RQtrSFtq1z61/DM40a7VGN8wnyg8oVhWSZAZchTO9zS/l8Kw6bk32CYjS5VgProK4ujLRMqxEE/bUPQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <h1>Vue 3 ref v.s. reactive</h1>
+  <div id="app">
+    <h2>{{ title }}</h2>
+    <h2>{{ title2 }}</h2>
+
+
+
+
+
+  </div>
+
+  <script>
+    const { reactive, ref } = Vue;
+    const app = {
+      setup() {
+        let title = "Hello, Vue 3!";
+        const title2 = ref("Hello, Vue 3!");
+        setTimeout(() => {
+          title = "test";
+          title2.value = "title2";
+          console.log("title should have been changed");
+        }, 1000);
+
+        return {
+          title,
+          title2,
+        };
+      }
+    }
+    Vue.createApp(app).mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,6 +1,8 @@
 # 題庫
 - `ref`, `reactive` 的差異為何？
+
 - `setup()` 的用途是甚麼？
+
 - `<script setup>` 的優點
 
 - 請描述一下你對 Vue 生命週期的理解？
@@ -30,3 +32,5 @@
 - 接口請求一般放在哪個生命週期中？
   - 接口請求一般放在 mounted 中，在渲染 html 後調用，  
     但需要注意的是 SSR 不支援 mounted，需要放到 created 中
+
+- `v-if`, `v-show` 的差異為何？

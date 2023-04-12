@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.prod.min.js"
+    integrity="sha512-Wn/yBJ4RQtrSFtq1z61/DM40a7VGN8wnyg8oVhWSZAZchTO9zS/l8Kw6bk32CYjS5VgProK4ujLRMqxEE/bUPQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Price: {{ price }}</p>
+    <p>Quantity: {{ quantity }}</p>
+
+    <button type="button" @click="quantityClickHandler('plus')">quantity + 1</button>
+    <button type="button" @click="quantityClickHandler('minus')">quantity - 1</button>
+  </div>
+
+  <script>
+    const { reactive, ref } = Vue;
+    const app = {
+      setup() {
+        const framework = reactive({
+          type: "Frontend",
+          name: "Vue",
+        });
+
+        const price = ref(0);
+        const quantity = ref(0);
+
+        function quantityClickHandler(method) {
+          switch (method) {
+            case "plus": {
+              quantity.value++;
+              break;
+            }
+            case "minus": {
+              if (quantity.value <= 0) {
+                return;
+              }
+              quantity.value--;
+              break;
+            }
+          }
+        }
+
+        return {
+          quantityClickHandler,
+          framework,
+          price,
+          quantity,
+        };
+      }
+    }
+    Vue.createApp(app).mount("#app");
+  </script>
+</body>
+
+</html>
