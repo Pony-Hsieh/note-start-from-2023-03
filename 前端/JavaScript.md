@@ -146,6 +146,11 @@
 
 
 ## 函式
+### callback function
+- callback function 並非立即被執行  
+  它會在函式內部的某個地方非同步的 "回去呼叫" 它（因此稱回呼）。  
+  呼叫 callback function 的 function 有責任在適當的時機去執行該 callback function。
+
 ### function declaration(陳述式), function expression(表達式) 差別？
 - function hoisting
 - 
@@ -174,7 +179,20 @@
 ```javascript
 
 ```
-- 
+
+### async await
+- The `AsyncFunction` object provides methods for async functions. In JavaScript, every async function is actually an `AsyncFunction` object.  
+  Note that AsyncFunction is not a global object. It can be obtained with the following code:
+  ```javascript
+  const AsyncFunction = async function () {}.constructor;
+  ```
+  AsyncFunction is a subclass of Function.
+- 只要 function 標記為 async，就表示裡頭可以撰寫 await 的同步語法
+- async 函式是 AsyncFunction 的實例，型態為 Function 的子類型
+- ES13 以後，可以在頂層直接撰寫 await，不限於只能在 async function 內才可使用
+- await 可以接上任何值，不一定要搭配 async 函式，只不過若是接上 Promise 實例，會在任務達成時，取得達成值作為 await 的結果
+#### 參考文章
+- [ASYNC、AWAIT](https://openhome.cc/zh-tw/javascript/es-function/async-await/)
 
 
 ## 事件循環

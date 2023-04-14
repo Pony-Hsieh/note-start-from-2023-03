@@ -1,5 +1,155 @@
 
 // Map
+new Map();
+
+/**
+ * Map Property
+ */
+// size
+{
+  // getMapSize();
+  function getMapSize() {
+    const map1 = new Map();
+    map1.set("a", "alpha");
+    map1.set("b", "beta");
+    map1.set("g", "gamma");
+    console.log(map1.size); // 3
+  }
+}
+
+/**
+ * Map Method
+ */
+// Map.prototype.set()
+{
+  // mapSet();
+  function mapSet() {
+    const map1 = new Map();
+    map1.set("bar", "foo");
+    console.log(map1.get('bar')); // "foo"
+    console.log(map1.get('baz')); // undefined
+  }
+}
+
+// Map.prototype.has()
+{
+  // mapHas();
+  function mapHas() {
+    const map1 = new Map();
+    map1.set("bar", "foo");
+    console.log(map1.has("bar")); // true
+    console.log(map1.has("baz")); // false
+  }
+}
+
+// Map.prototype.delete()
+{
+  // mapDelete();
+  function mapDelete() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+
+    console.log(map1.delete("c")); // false
+    console.log(map1.delete("b")); // true
+    // Expected result: true
+    // True indicates successful removal
+
+    console.log(map1.has("bar")); // false
+    console.log(map1.has("a")); // true
+  }
+}
+
+// Map.prototype.clear()
+{
+  // mapClear();
+  function mapClear() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    console.log(map1);
+    console.log(map1.size); // 2
+    map1.clear();
+    console.log(map1);
+    console.log(map1.size); // 0
+  }
+}
+
+// Map.prototype.get()
+{
+  // mapGet();
+  function mapGet() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    console.log(map1.get("a")); // 1
+    console.log(map1.get("c")); // undefined
+  }
+}
+
+// Map.prototype.keys()
+{
+  // mapKeys();
+  function mapKeys() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    // console.log(map1.keys()); // MapIterator {'a', 'b'}
+
+    const mapIter = map1.keys();
+    console.log(mapIter.next()); // a
+    console.log(mapIter.next().value); // a
+    console.log(mapIter.next().value); // b
+    console.log(mapIter.next().value); // undefined
+    console.log(map1);
+  }
+}
+
+// Map.prototype.values()
+{
+  // mapValues();
+  function mapValues() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    console.log(map1.values()); // MapIterator {1, 2}
+
+    const mapIter = map1.values();
+    console.log(mapIter.next().value); // 1
+    console.log(mapIter.next().value); // 2
+    console.log(mapIter.next().value); // undefined
+    console.log(map1);
+  }
+}
+
+// Map.prototype.entries()
+{
+  // mapEntries();
+  function mapEntries() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    const mapIter = map1.entries();
+    console.log(mapIter.next().value); // ['a', 1]
+    console.log(mapIter.next().value); // ['b', 2]
+    console.log(mapIter.next().value); // undefined
+  }
+}
+
+// Map.prototype.forEach()
+{
+  mapForEach();
+  function mapForEach() {
+    const map1 = new Map();
+    map1.set("a", 1);
+    map1.set("b", 2);
+    map1.set("c", 3);
+
+    map1.forEach((value, key, map) => {
+      console.log(value, key, map);
+    });
+  }
+}
 
 /*******************************************************************/
 // Set
@@ -26,18 +176,24 @@ const set1 = new Set([1, 2, 3, 4, 5]);
 // console.log(set2);
 
 /**
- * Map API
+ * Set Property
  */
-
-// .clear()
+// size
 {
-  // clear();
-  function clear() {
-    const set1 = new Set([1, 2, 3, 4, 5]); // Set(5) {1, 2, 3, 4, 5}
-    set1.clear(); // Set(0) {size: 0}
+  // sizeFunc();
+  function sizeFunc() {
+    const set1 = new Set();
+    set1.add(42);
+    set1.add("forty two");
+    set1.add("forty two");
+    set1.add({});
+    console.log(set1.size); // 3
   }
 }
 
+/**
+ * Set Method
+ */
 // .add()
 {
   add();
@@ -61,6 +217,15 @@ const set1 = new Set([1, 2, 3, 4, 5]);
     set1.add(1); // Set(1) {1}
     set1.add(2); // Set(2) {1, 2}
     set1.delete(1); // Set(1) {2}
+  }
+}
+
+// .clear()
+{
+  // clear();
+  function clear() {
+    const set1 = new Set([1, 2, 3, 4, 5]); // Set(5) {1, 2, 3, 4, 5}
+    set1.clear(); // Set(0) {size: 0}
   }
 }
 
@@ -92,7 +257,7 @@ const set1 = new Set([1, 2, 3, 4, 5]);
     mySet.add("baz");
 
     const setIter = mySet.keys();
-    console.log(setIter);
+    console.warn(setIter);
     console.log(setIter.next().value); // "foo"
     console.log(setIter.next().value); // "bar"
     console.log(setIter.next().value); // "baz"
@@ -103,11 +268,6 @@ const set1 = new Set([1, 2, 3, 4, 5]);
 {
   // valuesFunc();
   function valuesFunc() {
-    console.log("valuesFunc");
-    const set1 = new Set();
-    set1.add(1);
-    set1.add(2);
-    set1.add(3);
     const iterator1 = set1.values();
     console.log(iterator1); // SetIterator {1, 2, 3}
     console.log(iterator1.next().value); // 1
@@ -136,59 +296,6 @@ const set1 = new Set([1, 2, 3, 4, 5]);
     // [1, 1]
     // [2, 2]
     // [3, 3]
-  }
-}
-
-// .entries()
-{
-  // entriesFunc();
-  function entriesFunc() {
-    console.log("entriesFunc");
-    const set1 = new Set();
-    set1.add(1);
-    set1.add(2);
-    set1.add(3);
-    const iterator1 = set1.entries();
-    console.log(iterator1);
-    for (const entry of iterator1) {
-      console.log(entry);
-    }
-    // [1, 1]
-    // [2, 2]
-    // [3, 3]
-  }
-}
-
-// .entries()
-{
-  // entriesFunc();
-  function entriesFunc() {
-    console.log("entriesFunc");
-    const set1 = new Set();
-    set1.add(1);
-    set1.add(2);
-    set1.add(3);
-    const iterator1 = set1.entries();
-    console.log(iterator1);
-    for (const entry of iterator1) {
-      console.log(entry);
-    }
-    // [1, 1]
-    // [2, 2]
-    // [3, 3]
-  }
-}
-
-// .size()
-{
-  // sizeFunc();
-  function sizeFunc() {
-    const set1 = new Set();
-    set1.add(42);
-    set1.add("forty two");
-    set1.add("forty two");
-    set1.add({});
-    console.log(set1.size); // 3
   }
 }
 
@@ -264,5 +371,17 @@ const set1 = new Set([1, 2, 3, 4, 5]);
 
 /*******************************************************************/
 
+// WeakSet
+{
+  const wSet = new WeakSet();
+  const a = [1, 2, 3];
+  const b = { name: 'explainthis' };
+
+  wSet.add(a); // WeakSet {Array(3)}
+  wSet.add(b); // WeakSet {{...}}
+  wSet.add(1); // Uncaught TypeError: Invalid value used in weak set
+}
+
+/*******************************************************************/
 
 
