@@ -100,12 +100,6 @@
 ### `typeof(NaN)` 回傳值為何？
   - 'number'
 
-### 為什麼 `typeof(null)` 回傳的是 'object'？
-
-### `null` 和 `undefined` 的區別？
-
-### 透過 `const` 聲明生成物件的時候，如何使其不可更改？
-
 ### 在 JavaScript 中，0.1 + 0.2 !== 0.3 的原因和解決方法
 - 原因
   - IEEE 754
@@ -115,6 +109,17 @@
 - 參考文章
   - [從 IEEE 754 標準來看為什麼浮點誤差是無法避免的](https://medium.com/starbugs/see-why-floating-point-error-can-not-be-avoided-from-ieee-754-809720b32175)
   - [javascript 雙精度浮點數剖析](https://zhuanlan.zhihu.com/p/351127362)
+
+### 其他
+- JavaScript 為動態定型語言，其變數本身使用者無需宣告型態，型態資訊僅在值或物件本身，變數只用來作為取得值或物件的參考。  
+  由於變數本身不帶型態資訊，同一個變數可以指定不同型態的值，實際操作時，是在執行時期才透過變數來參考至物件或值，才得知物件或值上有操作之方法。
+
+
+## 物件
+- 物件的 key 如果沒有用中括號包起來的話，只能是 string
+- 物件的屬性名稱可以有兩種類型
+  1. string
+  2. Symbol
 
 
 ## 閉包、作用域
@@ -268,6 +273,9 @@
 - 
 
 
+
+
+
 ## 其他
 ### 記憶體管理
 - 像 C 語言一樣低階的語言，都有著如 malloc() 跟 free() 的低階函式控管記憶體權限
@@ -330,6 +338,17 @@
   - [js 中有哪些內置錯誤類型？](https://juejin.cn/post/7020321066664853540)
   - [從ES6開始的JavaScript學習生活 - 錯誤與例外處理](https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part3/error.html)
 
+### 發展過程
+- Brendan Eich (JavaScript 主要創造者與架構師) 在《Effective JavaScript》前言中這麼描述：
+  > 1995 年 5 月在管理階層協迫性且互相衝突的命令：「讓它看起來像 Java」、「讓初學者容易上手」、「讓它能控制 Netscape 瀏覽器中幾乎所有的東西」之下，我在十天內建立了 JavaScript。
+- 命名轉變
+  - JavaScript 一開始被命名為 Mocha
+  - 1995 年 9 月 Navigator 2.0 的 Beta 版改名為 LiveScript
+  - 為了行銷這門語言，1995 年 12 月 Netscape Navigator 2.0 Beta 3 中被改名為 JavaScript，以搭上「Java」這個熱門話題 ，並且號稱它是為非程式設計師打造、簡單易用的腳本語言。
+- JavaScript 與 Java 之間，除了基礎流程語法及一些關鍵字相似之外，在風格或是典範根本上是兩種完全不同的語言；  
+  另一方面，由於設計上倉促急迫，JavaScript 有不少矛盾與古怪的特性，有些矛盾特性今日依舊存在，應該避免使用；然而有些古怪特性，在 20 多年來開發者的經驗與創意持續累積下，卻也成了 JavaScript 中的亮點，成了 JavaScript 開發者都應當掌握及善用的特色。
+- 參考文章
+  - [林信良 - 從 ECMASCRIPT 5 開始](https://openhome.cc/zh-tw/javascript/basics/es5/)
 
 -----------------------------------------------------------------------------------------------------------------
 # 待寫答案
@@ -384,3 +403,9 @@
 - 請說出 JavaScript 所有的基本型別
 
 - HTTP 狀態碼 304 代表什麼？是多好還是少好？
+
+- 為什麼 `typeof(null)` 回傳的是 'object'？
+
+- `null` 和 `undefined` 的區別？
+
+- 透過 `const` 聲明生成物件的時候，如何使其不可更改？
