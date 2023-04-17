@@ -10,11 +10,11 @@
 
 // Symbol() 可以接受哪些型別的參數
 {
-  symbolTest();
+  // symbolTest();
   function symbolTest() {
     const s1 = Symbol();
     console.log(s1);
-    
+
     const s2 = Symbol("foo");
     console.log(s2); // 'foo'
 
@@ -140,8 +140,64 @@
   }
 }
 
+{
+  symbolTest();
+  function symbolTest() {
+    // const id = Symbol("id");
+    // console.log(id === id);
+    const user = {
+      name: "John",
+      [Symbol("id")]: 123 // 而不是 "id"：123
+    };
+  }
+}
+
+// 如何取得物件中的 Symbol
+{
+  symbolTest();
+  function symbolTest() {
+    const user = {
+      name: "John",
+      [Symbol("year")]: 1997,
+      [Symbol("month")]: 2,
+    };
+
+    /** 可以取得 Symbol 的方式
+     */
+
+    // 使用 Object.getOwnPropertySymbols() 取得物件的 Symbol
+    console.log(
+      Object.getOwnPropertySymbols(user) // [Symbol(year), Symbol(month)]
+    );
+
+    // 使用 Reflect.ownKeys() 取得物件所有的 key
+    console.log(
+      Reflect.ownKeys(user) // ['name', Symbol(year), Symbol(month)]
+    );
+
+    /** 無法取得 Symbol 的方式
+     */
+
+    // 無法透過 Object.keys() 取得 Symbol
+    console.log(
+      Object.keys(user) // ['name']
+    );
+
+    // 無法透過 for...in 取得 Symbol
+    for (let prop in user) {
+      console.log(
+        prop // 'name'
+      );
+    }
+
+    // // 無法透過 Object.getOwnPropertyNames() 取得 Symbol
+    console.log(
+      Object.getOwnPropertyNames(user) // ['name']
+    );
+  }
+}
 
 
 
 // 如何宣告 Symbol
-// 建立 Symbol 變數之後，要如何更新它的值？
+// 建立 Symbol 變數之後，能夠調整它的 description 嗎
