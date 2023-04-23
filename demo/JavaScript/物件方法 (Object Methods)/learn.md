@@ -60,6 +60,11 @@ If the value is null or undefined, it creates and returns an empty object.
 ### 參考文章
 - [Object.defineProperty() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
+
+
+
+
+
 ## `Object.keys()`
 - 只會列出 enumerable string-keyed 的 key
   - 非 enumerable 的 key 不會被列舉出來

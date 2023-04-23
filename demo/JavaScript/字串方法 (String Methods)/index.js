@@ -14,6 +14,21 @@
 
 
 /****************************************/
+// match
+{
+  // testMatch();
+  function testMatch() {
+    const sentence = "The quick brown fox jumps over the lazy dog.";
+    const word1 = "fox";
+    const word2 = "test";
+    // console.log(sentence.includes(word1)); // true
+    // console.log(sentence.includes(word2)); // false
+    // console.log(sentence.includes(new RegExp('H'))); // Uncaught TypeError: First argument to String.prototype.includes must not be a regular expression
+  }
+}
+
+
+/****************************************/
 // search
 {
   // testSearch();

@@ -1,4 +1,4 @@
-## includes
+## `String.prototype.includes()`
 - The includes() method performs a case-sensitive search to determine whether one string may be found within another string, returning true or false as appropriate.
   - 大小寫敏感
 
@@ -22,7 +22,11 @@
 - [String.prototype.includes() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
 
 
-## search
+
+## `String.prototype.match()`
+
+
+## `String.prototype.search()`
 - The search() method executes a search for a match between a regular expression and this String object.
 
 ### 參數
@@ -47,7 +51,7 @@
 - [String.prototype.search() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search)
 
 
-## indexOf
+## `String.prototype.indexOf()`
 - The indexOf() method, given one argument: a substring to search for, searches the entire calling string, and returns the index of the first occurrence of the specified substring. Given a second argument: a number, the method returns the first occurrence of the specified substring at an index greater than or equal to the specified number.
 
 ### 參數

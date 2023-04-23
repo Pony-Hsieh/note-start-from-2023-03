@@ -97,8 +97,26 @@
   - [isNaN() - MDN 繁體中文](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/isNaN)
   - [[第三週] JavaScript - 把你對 isNaN 的不滿都說出來](https://yakimhsu.com/project/project_w3_Javasciprt_NaN.html)
 
+### 為什麼 `typeof(null)` 是 object？
+- The "typeof null" bug is a remnant(遺跡) from the first version of JavaScript. In this version, values were stored in 32 bit units, which consisted of a small type tag (1–3 bits) and the actual data of the value. The type tags were stored in the lower bits of the units. There were five of them:
+  1. 000: object.  
+    The data is a reference to an object.
+  2. 1: int.  
+    The data is a 31 bit signed integer.
+  3. 010: double.  
+    The data is a reference to a double floating point number.
+  4. 100: string.
+    The data is a reference to a string.
+  5. 110: boolean.
+    The data is a boolean.
+  - 所以是一段小 tag + 實際的值，是嗎？
+- 參考文章
+  - [MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)
+  - [The history of “typeof null”](https://2ality.com/2013/10/typeof-null.html)
+  - [js 數據類型檢測 typeof 和 instanceof 檢測原理](https://juejin.cn/post/6844903776642416654)
+
 ### `typeof(NaN)` 回傳值為何？
-  - 'number'
+- 'number'
 
 ### 在 JavaScript 中，0.1 + 0.2 !== 0.3 的原因和解決方法
 - 原因
@@ -371,6 +389,7 @@
 
 -----------------------------------------------------------------------------------------------------------------
 # 題庫
+- 為什麼在 JS 中的最大安全數是 2⁵³ - 1?
 
 - 在 JavaScript 中，`Map` 與 `Object` 的差別？為什麼有 `Object` 還需要 `Map`？
 
