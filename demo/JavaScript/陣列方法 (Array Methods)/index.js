@@ -47,81 +47,6 @@
   }
 }
 
-/****************************************/
-// Array.prototype.entries()
-{
-  // testEntries();
-  function testEntries() {
-    // basicTest();
-    function basicTest() {
-      const alpha = ['a', 'b', 'c'];
-
-      console.log(
-        alpha.entries() // Array Iterator {}
-      );
-      console.log(
-        alpha.entries().next() // {value: Array(2), done: false}
-      );
-      console.log(
-        alpha.entries().next().value // [0, 'a']
-      );
-
-
-      const sparse = [, , , ,];
-      console.log(
-        sparse.entries() // Array Iterator {}
-      );
-      console.log(
-        sparse.entries().next() // {value: Array(2), done: false}
-      );
-      console.log(
-        sparse.entries().next().value // [0, undefined]
-      );
-    }
-
-    // Iterating with index and element
-    // iterationTest();
-    function iterationTest() {
-      const alpha = ['a', 'b', 'c'];
-      for (const [index, element] of alpha.entries()) {
-        console.log(index, element);
-      }
-      // Output
-      // 0 'a'
-      // 1 'b'
-      // 2 'c'
-    }
-
-    // Using a for...of loop
-    // forOfTest();
-    function forOfTest() {
-      const alpha = ['a', 'b', 'c'];
-      const arrayEntries = alpha.entries();
-      for (const element of arrayEntries) {
-        console.log(element);
-      }
-      // Output
-      // [0, 'a']
-      // [1, 'b']
-      // [2, 'c']
-    }
-
-    // Iterating sparse arrays
-    // sparseArrayTest();
-    function sparseArrayTest() {
-      const sparse = [, 'a', 'b', 'c'];
-      const arrayEntries = sparse.entries();
-      for (const element of arrayEntries) {
-        console.log(element);
-      }
-      // Output
-      // [0, undefined]
-      // [1, 'a']
-      // [2, 'b']
-      // [3, 'c']
-    }
-  }
-}
 
 /****************************************/
 // Array.prototype.fill()
@@ -343,6 +268,261 @@
     console.log(map1); // [2, 8, 18, 32]
     const map2 = array1.map(eachNum => Math.sqrt(eachNum));
     console.log(map2); // [1, 2, 3, 4]
+  }
+}
+
+/****************************************/
+// Array.prototype.inclueds()
+{
+  // testInclueds();
+  function testInclueds() {
+    const array1 = [1, 2, 3, NaN];
+    console.log(
+      array1.includes(2) // true
+    );
+    console.log(
+      // 不改變調用此方法的陣列
+      array1.includes(NaN) // [1, 2, 3, NaN]
+    );
+    console.log(
+      array1 // true
+    );
+
+    const pets = ['cat', 'dog', 'bat'];
+    console.log(
+      pets.includes('cat') // true
+    );
+
+    console.log(
+      pets.includes('at') // false
+    );
+  }
+}
+
+
+/****************************************/
+// Array.prototype.keys()
+{
+  // testKeys();
+  function testKeys() {
+    const array1 = ['a', 'b', 'c'];
+    const iterator = array1.keys();
+    console.log(iterator); // Array Iterator {}
+    for (const key of iterator) {
+      console.log(key);
+    }
+    // 0
+    // 1
+    // 2
+  }
+}
+
+
+/****************************************/
+// Array.prototype.values()
+{
+  // testValues();
+  function testValues() {
+    const array1 = ['a', 'b', 'c'];
+    const iterator = array1.values();
+    console.log(iterator); // Array Iterator {}
+    // console.log(
+    //   iterator.next() // {value: 'a', done: false}
+    // );
+    // console.log(
+    //   iterator.next().value // 'b'
+    // );
+
+    for (const key of iterator) {
+      console.log(key);
+    }
+    // a
+    // b
+    // c
+  }
+}
+
+/****************************************/
+// Array.prototype.entries()
+{
+  testEntries();
+  function testEntries() {
+    // basicTest();
+    function basicTest() {
+      const alpha = ['a', 'b', 'c'];
+
+      console.log(
+        alpha.entries() // Array Iterator {}
+      );
+      console.log(
+        alpha.entries().next() // {value: Array(2), done: false}
+      );
+      console.log(
+        alpha.entries().next().value // [0, 'a']
+      );
+
+      const sparse = [, , , ,];
+      console.log(
+        sparse.entries() // Array Iterator {}
+      );
+      console.log(
+        sparse.entries().next() // {value: Array(2), done: false}
+      );
+      console.log(
+        sparse.entries().next().value // [0, undefined]
+      );
+    }
+
+    // Iterating with index and element
+    // iterationTest();
+    function iterationTest() {
+      const alpha = ['a', 'b', 'c'];
+      for (const [index, element] of alpha.entries()) {
+        console.log(index, element);
+      }
+      // Output
+      // 0 'a'
+      // 1 'b'
+      // 2 'c'
+    }
+
+    // Using a for...of loop
+    // forOfTest();
+    function forOfTest() {
+      const alpha = ['a', 'b', 'c'];
+      const arrayEntries = alpha.entries();
+      for (const element of arrayEntries) {
+        console.log(element);
+      }
+      // Output
+      // [0, 'a']
+      // [1, 'b']
+      // [2, 'c']
+    }
+
+    // Iterating sparse arrays
+    // sparseArrayTest();
+    function sparseArrayTest() {
+      const sparse = [, 'a', 'b', 'c'];
+      const arrayEntries = sparse.entries();
+      for (const element of arrayEntries) {
+        console.log(element);
+      }
+      // Output
+      // [0, undefined]
+      // [1, 'a']
+      // [2, 'b']
+      // [3, 'c']
+    }
+  }
+}
+
+/****************************************/
+// Array.prototype.pop()
+{
+  // testPop();
+  function testPop() {
+    const array1 = ['a', 'b', 'c', 'd', 'e'];
+    console.log(
+      array1.pop() // 'e'
+    );
+    console.log(
+      array1 // ['a', 'b', 'c', 'd']
+    );
+  }
+}
+
+
+/****************************************/
+// Array.prototype.push()
+{
+  // testPush();
+  function testPush() {
+    const array1 = ['a', 'b', 'c', 'd', 'e'];
+    console.log(
+      array1.pop() // 'e'
+    );
+    console.log(
+      array1 // ['a', 'b', 'c', 'd']
+    );
+
+  }
+}
+
+
+/****************************************/
+// Array.prototype.join()
+{
+  // testPop();
+  function testPop() {
+    const elements = ['Fire', 'Air', 'Water'];
+
+    console.log(
+      elements.join() // 'Fire,Air,Water'
+    );
+
+    console.log(
+      elements.join('') // 'FireAirWater'
+    );
+
+    console.log(
+      elements.join('-') // 'Fire-Air-Water'
+    );
+  }
+}
+
+
+/****************************************/
+// Array.prototype.reverse()
+{
+  // testReverse();
+  function testReverse() {
+    const nums = [1, 2, , 4, 5];
+    nums.reverse();
+    console.log(nums); // [5, 4, empty, 2, 1]
+  }
+}
+
+
+/****************************************/
+// Array.prototype.toReversed()
+{
+  // testToReversed();
+  function testToReversed() {
+    const nums = [1, 2, , 4, 5];
+    const reversedArr = nums.toReversed();
+    console.log(
+      // 不改變調用此方法的陣列
+      nums // [1, 2, empty, 4, 5]
+    );
+    console.log(reversedArr); // [5, 4, empty, 2, 1]
+  }
+}
+
+
+/****************************************/
+// Array.prototype.sort()
+{
+  // testSort();
+  function testSort() {
+    const array1 = [1, 30, 4, , , , 21, 100000];
+    array1.sort();
+    console.log(array1); // [1, 100000, 21, 30, 4, empty × 3]
+  }
+}
+
+
+/****************************************/
+// Array.prototype.with()
+{
+  // testWith();
+  function testWith() {
+    const arr = [1, , 3, 4, , 6];
+    console.log(
+      arr.with(0, 2) // [2, undefined, 3, 4, undefined, 6]
+    ); 
+    // 不改變調用此方法的陣列
+    console.log(arr); // [1, empty, 3, 4, empty, 6]
   }
 }
 

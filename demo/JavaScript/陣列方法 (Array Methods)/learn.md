@@ -106,29 +106,28 @@ boolean
 
 ## `Array.prototype.splice()`
 - 改變調用此方法的陣列
-The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
-
-To create a new array with a segment removed and/or replaced without mutating the original array, use toSpliced(). To access part of an array without modifying it, see slice().
-
+- Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+- To create a new array with a segment removed and/or replaced without mutating the original array, use toSpliced(). To access part of an array without modifying it, see slice().
 ### 參數
-`ssplice(start, deleteCount, item1, item2, itemN)`
-1. start (Optional)
-   - Zero-based index at which to start extraction, converted to an integer.
-     - Negative index counts back from the end of the array — if start < 0, start + array.length is used.
-     - If start < -array.length or start is omitted, 0 is used.
-     - If start >= array.length, nothing is extracted.
-2. end (Optional)
-   - Zero-based index at which to end extraction, converted to an integer. slice() extracts up to but not including end.
-     - Negative index counts back from the end of the array — if end < 0, end + array.length is used.
-     - If end < -array.length, 0 is used.
-     - If end >= array.length or end is omitted, array.length is used, causing all elements until the end to be extracted.
-     - If end is positioned before or at start after normalization, nothing is extracted.
-
+`splice(start, deleteCount, item1, item2, itemN)`
+1. start
+   - Zero-based index at which to start changing the array, converted to an integer.
+   - Negative index counts back from the end of the array
+     1. start < 0, start + array.length is used.
+     2. start < -array.length, 0 is used.
+     3. start >= array.length, no element will be deleted, but the method will behave as an adding function, adding as many elements as provided.
+   - If start is omitted (and splice() is called with no arguments), nothing is deleted. This is different from passing undefined, which is converted to 0.
+2. deleteCount (Optional)
+   - An integer indicating the number of elements in the array to remove from start.
+   - If deleteCount is omitted, or if its value is greater than or equal to the number of elements after the position specified by start, then all the elements from start to the end of the array will be deleted. However, if you wish to pass any itemN parameter, you should pass Infinity as deleteCount to delete all elements after start, because an explicit undefined gets converted to 0.
+   - If deleteCount is 0 or negative, no elements are removed. In this case, you should specify at least one new element (see below).
+3. item1, …, itemN (Optional)
+   - The elements to add to the array, beginning from start.
+   - If you do not specify any elements, splice() will only remove elements from the array.
 ### 回傳值
 - An array containing the deleted elements.
   - If only one element is removed, an array of one element is returned.
   - If no elements are removed, an empty array is returned.
-
 ### 參考文章
 - [Array.prototype.splice() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 
@@ -194,20 +193,6 @@ To create a new array with a segment removed and/or replaced without mutating th
 ### 參考文章
 - [Array.prototype.copyWithin() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin)
 - [[Day 12 | Array.prototype.copyWithin () ]](https://ithelp.ithome.com.tw/articles/10235853)
-
-## `Array.prototype.entries()`
-- 不會改變調用此方法的陣列
-- The entries() method returns a new array iterator object that contains the key/value pairs for each index in the array.
-
-### 參數
-`entries()`
-- 無
-
-### 回傳值
-- a **new array iterator object** that contains the key/value pairs for each index in the array.
-
-### 參考文章
-- [Array.prototype.entries() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
 
 
 ## `Array.prototype.fill()`
@@ -489,51 +474,321 @@ To create a new array with a segment removed and/or replaced without mutating th
 - [Array.prototype.map() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
 
+## `Array.prototype.includes()`
+- 不改變調用此方法的陣列
+- Determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+- Compares searchElement to elements of the array using the **SameValueZero algorithm**. Values of zero are all considered to be equal, regardless of sign. (That is, -0 is equal to 0), but false is not considered to be the same as 0.
+- NaN can be correctly searched for.
+- When used on sparse arrays, the includes() method iterates empty slots as if they have the value undefined.
+### 參數
+`includes(searchElement, fromIndex)`
+1. searchElement
+   - The value to search for
+2. fromIndex
+   - Zero-based index at which to start searching, converted to an integer.
+   - Negative index counts back from the end of the array
+     1. fromIndex < 0  
+        - fromIndex + array.length is used.  
+          However, the array is still searched from front to back in this case.
+     2. fromIndex < -array.length or fromIndex is omitted  
+        - 0 is used, causing the entire array to be searched.
+     3. fromIndex >= array.length  
+        - the array is not searched and false is returned.
+### 回傳值
+- A boolean value which is true if the value searchElement is found within the array (or the part of the array indicated by the index fromIndex, if specified).
+### 參考文章
+- [Array.prototype.includes() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+
+
+## `Array.prototype.keys()`
+- 不改變調用此方法的陣列
+- Returns a new array iterator object that contains the keys for each index in the array.
+- When used on sparse arrays, the keys() method iterates empty slots as if they have the value undefined.
+### 參數
+`keys()`
+- 無
+### 回傳值
+- A new iterable iterator object.
+### 參考文章
+- [Array.prototype.keys() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys)
+
+
+## `Array.prototype.values()`
+- 不改變調用此方法的陣列
+- The values() method returns a new array iterator object that iterates the value of each item in the array.
+- When used on sparse arrays, the values() method iterates empty slots as if they have the value undefined.
+### 參數
+`values()`
+- 無
+### 回傳值
+- A new iterable iterator object.
+### 參考文章
+- [Array.prototype.values() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values)
+
+
+## `Array.prototype.entries()`
+- 不會改變調用此方法的陣列
+- The entries() method returns a new array iterator object that contains the key/value pairs for each index in the array.
+### 參數
+`entries()`
+- 無
+### 回傳值
+- a **new array iterator object** that contains the key/value pairs for each index in the array.
+### 參考文章
+- [Array.prototype.entries() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
+
+
+## `Array.prototype.pop()`
+- 會改變調用此方法的陣列
+- Removes the last element from an array and returns that element. This method changes the length of the array.
+  - 移除陣列中最後一項元素
+### 參數
+`pop()`
+- 無
+### 回傳值
+- The removed element from the array; undefined if the array is empty.
+### 參考文章
+- [Array.prototype.pop() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
+
+
+## `Array.prototype.push()`
+- 會改變調用此方法的陣列
+- Adds the specified elements to the end of an array and returns the new length of the array.
+  - 在陣列末端新增元素
+### 參數
+`push(element0, element1, /* … ,*/ elementN)`
+1. elementN
+   - The element(s) to add to the end of the array.
+### 回傳值
+- The new length property of the object upon which the method was called.
+### 參考文章
+- [Array.prototype.push() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
+
+
+## `Array.prototype.shift()`
+- 會改變調用此方法的陣列
+- Removes the first element from an array and returns that removed element. This method changes the length of the array.
+  - 移除陣列開頭元素
+### 參數
+`shift()`
+- 無
+### 回傳值
+- The removed element from the array; undefined if the array is empty.
+### 參考文章
+- [Array.prototype.shift() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
+
+
+## `Array.prototype.unshift()`
+- 會改變調用此方法的陣列
+- Removes the first element from an array and returns that removed element. This method changes the length of the array.
+  - 在陣列開頭新增元素
+- if multiple elements are passed as parameters, they're inserted in chunk at the beginning of the object, in the exact same order they were passed as parameters. Hence, calling unshift() with n arguments once, or calling it n times with 1 argument (with a loop, for example), don't yield(產生) the same results.
+### 參數
+`unshift(element0, element1, /* … ,*/ elementN)`
+1. elementN
+   - The elements to add to the front of the arr.
+### 回傳值
+- The new length property of the object upon which the method was called.
+### 參考文章
+- [Array.prototype.unshift() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+
+
+## `Array.prototype.join()`
+- 不改變調用此方法的陣列
+- Creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string. If the array has only one item, then that item will be returned without using the separator.
+- The string conversions of all array elements are joined into one string.
+  - If an element is undefined, null, it is converted to an empty string instead of the string "null" or "undefined".
+- The join method is accessed internally by Array.prototype.toString() with no arguments. Overriding join of an array instance will override its toString behavior as well.
+- When used on sparse arrays, the join() method iterates empty slots as if they have the value undefined.
+### 參數
+`join(separator)`
+1. separator (Optional)
+   - 預設值：a comma (",")
+   - Specifies(指定) a string to separate each pair of adjacent(鄰近的) elements of the array. The separator is converted to a string if necessary. If separator is an empty string, all elements are joined without any characters in between them.
+### 回傳值
+- A string with all array elements joined.
+  1. arr.length is 0, the empty string is returned.
+  2. 
+### 參考文章
+- [Array.prototype.join() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+
+## `Array.prototype.reverse()`
+- 改變調用此方法的陣列
+- Reverses an array in place and returns the reference to the same array, the first array element now becoming the last, and the last array element becoming the first.  
+- Preserves empty slots.
+- To reverse the elements in an array without mutating the original array, use `toReversed()`.
+### 參數
+`reverse()`
+- 無
+### 回傳值
+- The reference to the original array, now reversed. Note that the array is reversed in place, and no copy is made.
+### 參考文章
+- [Array.prototype.reverse() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+
+
+## `Array.prototype.toReversed()`
+- 不改變調用此方法的陣列
+- The toReversed() method of an Array instance is the copying counterpart(極相像的人(或物)) of the reverse() method. It returns a new array with the elements in reversed order.
+- Iterates empty slots as if they have the value undefined.
+### 參數
+`toReversed()`
+- 無
+### 回傳值
+- A new array containing the elements in reversed order.
+### 參考文章
+- [Array.prototype.toReversed() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)
+
+
+## `Array.prototype.sort()`
+- 改變調用此方法的陣列
+- Sorts the elements of an array in place and returns the reference to the same array, now sorted. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
+- The time and space complexity of the sort cannot be guaranteed as it depends on the implementation.
+- To sort the elements in an array without mutating the original array, use toSorted().
+- 預設是依據 UTF-16 Unicode code point value 升序排列
+- Preserves empty slots. If the source array is sparse, the empty slots are moved to the end of the array, and always come after all the undefined.
+  - 如果有 empty slots 的話，則會全部被移到陣列尾端，並轉為 undefined
+### 參數
+`sort(compareFn)`
+1. compareFn (Optional)
+   - A function that defines the sort order. The return value should be a number whose positivity indicates the relative order of the two elements. The function is called with the following arguments:
+   1. a
+      - The first element for comparison. Will never be undefined.
+   2. b
+      - The second element for comparison. Will never be undefined.
+   - If omitted, the array elements are converted to strings, then **sorted according to each character's Unicode code point value**.
+### 回傳值
+- The reference to the original array, now sorted. Note that the array is sorted in place, and no copy is made.
+### 參考文章
+- [Array.prototype.sort() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+
+
+## `Array.prototype.with()`
+- 不改變調用此方法的陣列
+  - This allows you to chain array methods while doing manipulations.
+- The with() method of an Array instance is the copying version of using the bracket notation to change the value of a given index. It returns a new array with the element at the given index replaced with the given value.
+  - arr[index] = value 的替代方案
+- If the source array is sparse, the empty slots will be replaced with undefined in the new array.
+### 參數
+`with(index, value)`
+1. index
+   - Zero-based index at which to change the array, converted to an integer.
+   - Negative index counts back from the end of the array
+     1. if index < 0, index + array.length is used.
+     2. If the index after normalization is out of bounds, a RangeError is thrown.
+2. value
+   - Any value to be assigned to the given index.
+### 回傳值
+- A new array with the element at index replaced with value.
+### 參考文章
+- [Array.prototype.with() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/with)
+
+
+## `Array.prototype.with()`
+<!-- - 不改變調用此方法的陣列 -->
+### 參數
+``
+### 回傳值
+### 參考文章
+- [Array.prototype.with() - MDN 英文](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/with)
+
+
 
 ## 待筆記方法
-Array.prototype.forEach()
-Array.prototype.map()
-
 Array.prototype.reverse()
 Array.prototype.toReversed()
-
 Array.prototype.sort()
 Array.prototype.toSorted()
-
-Array.prototype.with()
-Array.prototype.splice()
-Array.prototype.toSpliced()
-
-
-
-Array.prototype.keys()
-Array.prototype.values()
-Array.prototype.entries()
-
-
-Array.prototype.pop()
-Array.prototype.push()
-Array.prototype.shift()
-Array.prototype.unshift()
-
 
 Array.prototype.reduce()
 Array.prototype.reduceRight()
 
+Array.prototype.with()
 
-Array.prototype.toLocaleString()
-Array.prototype.toString()
-
+Array.prototype.splice()
+Array.prototype.toSpliced()
 
 Array.prototype.flat()
 Array.prototype.flatMap()
 Array.from()
 Array.isArray()
-Array.prototype.join()
-Array.prototype.map()
 Array.of()
 
+Array.prototype.toString()
+Array.prototype.toLocaleString()
 
-Array.prototype.includes()
+
+## 比較
+
+### 尋找
+- find()
+  - 搭配 callbackFn，找到第一個符合條件的值
+- findIndex()
+  - 搭配 callbackFn，找到第一個符合條件的值的 index
+
+- findLast()
+  - 搭配 callbackFn，找到最後一個符合條件的值
+- findLastIndex()
+  - 搭配 callbackFn，找到最後一個符合條件的值的 index
+
+- indexOf()
+  - 無法正確識別 NaN
+  - 透過 === 判別元素是否相等
+- lastIndexOf()
+  - 無法正確識別 NaN
+
+- at()
+
+
+### 檢查
+- every()
+- some()
+- inclueds()
+  - 回傳 boolean，透過 SameValueZero algorithm 檢測陣列是否包含指定元素
+  - 可以正確識別 NaN
+
+
+### 切片
+- slice()
+- splice()
+
+
+### 遞迴
+- forEach()
+  - 回傳值為 undefined
+- map()
+  - 回傳一個新的陣列
+- filter()
+
+
+### 增刪元素
+- pop()
+  - 移除陣列中最後一項元素
+  - 回傳值：
+    - 被移除的元素
+- shift()
+  - 移除陣列開頭元素
+  - 回傳值：
+    - 被移除的元素
+- push()
+  - 在陣列末端新增元素
+  - 回傳值：
+    - 新陣列的長度
+- unshift()
+  - 在陣列開頭新增元素
+  - 回傳值：
+    - 新陣列的長度
+
+
+### 串接
+- concat()
+- join()
+
+### 順序
+- reverse()
+- toReversed()
+- sort()
+- toSorted()
 
 
