@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Demo For Dynamic Import</title>
+  </head>
+  <body>
+    <script>
+      test();
+      async function test() {
+        import('D:/Users/zach.hsieh/Desktop/私人/筆記/note-start-from-2023-03/demo/testModule.js').then((module) => {
+          console.log(module);
+        });
+        // let { hi, bye } = await import('./testModule.js');
+        // hi();
+        // bye();
+        // printName('test');
+      }
+      // button.addEventListener('click', () => {
+      //   import('./module.mjs').then((module) => {
+      //     module.myFunction();
+      //   });
+      // });
+
+      // button.addEventListener('click', async () => {
+      //   const { myFunction } = await import('./module.mjs');
+      //   myFunction();
+      // });
+    </script>
+  </body>
+</html>
+
+@include mobile {
+}
+

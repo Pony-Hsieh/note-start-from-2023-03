@@ -1,4 +1,65 @@
 /****************************************/
+// String.prototype.at()
+{
+  // testAt();
+  function testAt() {
+    const sentence = 'The quick brown fox jumps over the lazy dog.';
+    console.log(
+      sentence.at(5) // 'u'
+    );
+    console.log(
+      sentence.at(-1) // '.'
+    );
+  }
+}
+
+
+/****************************************/
+// String.prototype.charAt()
+{
+  // testCharAt();
+  function testCharAt() {
+    const sentence = 'The quick brown fox jumps over the lazy dog.';
+    console.log(
+      sentence.charAt(5) // 'u'
+    );
+    console.log(
+      sentence.charAt(-1) // ''
+    );
+  }
+}
+
+
+/****************************************/
+// String.prototype.charCodeAt()
+{
+  // testCharCodeAt();
+  function testCharCodeAt() {
+    const sentence = 'The quick brown fox jumps over the lazy dog.';
+    console.log(
+      sentence.charCodeAt(5) // '117'
+    );
+    console.log(
+      sentence.charCodeAt(-1) // NaN
+    );
+  }
+}
+
+
+/****************************************/
+// String.prototype.concat()
+{
+  testConcat();
+  function testConcat() {
+    const hello = 'Hello, ';
+    console.log(
+      hello.concat('Kevin', '. Have a nice day.')
+    );
+  }
+}
+
+
+/****************************************/
 // includes
 {
   // testIncludes();

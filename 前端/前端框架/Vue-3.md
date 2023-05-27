@@ -34,3 +34,19 @@
     但需要注意的是 SSR 不支援 mounted，需要放到 created 中
 
 - `v-if`, `v-show` 的差異為何？
+
+## 未分類
+- 使用 v-for 在疊代 map 時，需要使用方括號
+  ```html
+  <div
+    class
+    v-for="[key, value] in quoteMap"
+    :key="key"
+  >
+    <p>
+      key: {{ key }}
+      <br />
+      value: {{ value }}
+    </p>
+  </div>
+  ```
