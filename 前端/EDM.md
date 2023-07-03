@@ -72,8 +72,9 @@
   - padding 無效
   - height 可用
 - `div`
-  - height 無效
+  - width, height 無效
   - padding 可用
+  - display 無效
 - `a`
   - style 會直接被移除
 
