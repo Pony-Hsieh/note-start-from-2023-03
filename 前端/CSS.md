@@ -1,3 +1,98 @@
+# 語法
+
+## SCSS 相關
+- `@extend` 無法在 media query 中使用
+- `@mixin` 搭配 `@include`
+  ```scss
+  @mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  .test {
+    background-color: blue;
+
+    @include mobile {
+      background-color: red;
+    }
+  }
+  ```
+- `%foo` 搭配 `@extend`
+  ```scss
+  %all-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .test {
+    @extend %all-flex-center;
+  }
+  ```
+- loop
+  ```scss
+  @for $i from 1 through 6 {
+    .condition#{$i} {
+      background: url("./img/condition#{$i}.png") no-repeat center/contain;
+      // background-position/background-size
+    }
+  }
+  ```
+# CSS 相關
+- 自製動畫效果 `@keyframes`
+  ```css
+  @keyframes animation-floating-down-first {
+    0% {
+      transform: translate(0, 0);
+    }
+    40% {
+      transform: translate(0, 0.5rem);
+    }
+    50% {
+      transform: translate(0, 0.5rem);
+    }
+    90% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+- animation
+  ```css
+  animation-name: none; /* 預設值 */
+  animation-name: animation-floating-down-first;
+
+  animation-iteration-count: 1; /* 預設值 */
+  animation-iteration-count: infinite;
+
+  animation-timing-function: ease; /* 預設值 */
+  animation-timing-function: linear;
+
+  animation-duration: 0s; /* 預設值 */
+  animation-duration: 6s;
+
+  animation-fill-mode: none; /* 預設值 */
+  animation-fill-mode: forwards; /* 動畫結束後，保持最後結束的樣子 */
+  ```
+- background
+  ```css
+  background-image: none; /* default */
+  background-image: url(stone-1.png);
+  background-image: linear-gradient(to bottom, #fff535, #fa0); /* 漸層 */
+
+  background-position: 0% 0%; /* default */
+  background-position: center;
+
+  background-repeat: repeat; /* default */
+  background-repeat: no-repeat;
+
+  background-size: auto; /* default */
+  background-size: contain;
+  background-size: cover;
+  ```
+
 # 已開始找答案
 
 -----------------------------------------------------------------------------------------------------------------
@@ -31,6 +126,7 @@
   你會選擇哪一種，為什麼？
 
 - 有什麼方法來隱藏網頁的內容？
+
 
 -----------------------------------------------------------------------------------------------------------------
 # 轉貼文章
