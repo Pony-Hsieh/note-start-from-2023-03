@@ -40,3 +40,8 @@
 - 由於箭頭函式並沒有自己的 `this`，所以透過 `call()` 或 `apply()` 呼叫箭頭函式只能傳入參數。thisArg 將會被忽略
 - 箭頭函式沒有 arguments，但 rest parameters 仍然可以使用
 - 沒有原型(prototype)屬性
+
+# length
+- The `length` property of a Function instance indicates the number of parameters expected by the function.
+  length property 表示該 function 預期被傳入的參數數量
+- 相較之下 arguments.length 是 function 內部的物件，會提供真正傳進 function 中的參數數量
