@@ -17,7 +17,7 @@
 - 遍歷 Set
 - 遍歷 object
 - 遍歷 Map
-
+ES6 提供了更簡單的迭代循環語法 for...of，使用該語法的前提是操作物件需要實作可迭代協定（The iterable protocol），簡單說就是該物件有個 Key 為 的Symbol.iterator 方法，該方法傳回一個 iterator 物件。
 
 
 

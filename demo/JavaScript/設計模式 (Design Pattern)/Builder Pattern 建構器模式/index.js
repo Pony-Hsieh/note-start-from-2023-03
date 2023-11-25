@@ -1,3 +1,84 @@
+/** 看得懂的範例 1  */
+{
+  class ShapeConfig {
+    width;
+    height;
+    color;
+    opacity;
+    borderWidth;
+
+    constructor(builder) {
+      this.width = builder.width;
+      this.height = builder.height;
+      this.color = builder.color;
+      this.opacity = builder.opacity;
+      this.borderWidth = builder.borderWidth;
+    }
+  }
+
+  class Shape {
+    constructor() {
+      this.width = 0;
+      this.height = 0;
+      this.color = '';
+      this.opacity = 1;
+      this.borderWidth = 0;
+    }
+
+    // 可以把多个值的比较逻辑都放在构建函数中
+    build() {
+      if (this.width < this.borderWidth) {
+        throw new Error('width should be greater than borderWidth');
+      }
+      return new ShapeConfig(this);
+    }
+
+    setWidth(width) {
+      if (typeof width !== 'number') {
+        throw new Error('width should be a number');
+      }
+      this.width = width;
+      return this;
+    }
+
+    setHeight(height) {
+      if (typeof height !== 'number') {
+        throw new Error('height should be a number');
+      }
+      this.height = height;
+      return this;
+    }
+
+    setColor(color) {
+      this.color = color;
+      return this;
+    }
+
+    setOpacity(opacity) {
+      this.opacity = opacity;
+      return this;
+    }
+
+    setBorderWidth(borderWidth) {
+      this.borderWidth = borderWidth;
+      return this;
+    }
+  }
+
+  const shape = new Shape();
+
+  // 可以通过 return this 实现链式调用
+  shape
+    .setWidth(10)
+    .setHeight(10)
+    .setColor('red')
+    .setOpacity(1)
+    .setBorderWidth(11)
+    .build();
+
+  console.log(shape);
+}
+
 /**  */
 {
   /**

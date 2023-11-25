@@ -1,4 +1,45 @@
 {
+  $('input[name="account"]').bind('click', function () {
+    const loginName = $('input[name="account"]').val();
+    // 如果有從彈窗登入模組中獲取到帳號(loginName)
+    if (loginName) {
+      // 取得帳號之後想要做的事情
+    }
+  });
+}
+{
+  class Test {
+    // 成功登入後要執行的函式
+    afterSuccessLoginCbs = new Set();
+
+    a() {
+      // Step: 逐一執行 afterSuccessLoginCbs 內的函式
+      this.afterSuccessLoginCbs.forEach((cb) => {
+        // 避免未設定 cb 時執行 undefined 導致出錯
+        if (cb) {
+          cb();
+        }
+      });
+    }
+
+    /** 新增成功登入後要執行的 function */
+    addAfterSuccessLoginCb(cb) {
+      if (typeof cb !== 'function') {
+        throw new Error('請傳入 function 作為參數');
+      }
+      this.afterSuccessLoginCbs.add(cb);
+    }
+
+    /** 移除成功登入後要執行的 function */
+    deleteAfterSuccessLoginCb(cb) {
+      if (typeof cb !== 'function') {
+        throw new Error('請傳入 function 作為參數');
+      }
+      this.afterSuccessLoginCbs.delete(cb);
+    }
+  }
+}
+{
   // 老写法
   'assign' in Object; // true
 
