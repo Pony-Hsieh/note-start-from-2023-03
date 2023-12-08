@@ -295,6 +295,20 @@
 
 
 ## 其他
+### cookie, sessionStorage, localStorage 的差異？
+- cookie
+  - cookie 會被自動夾帶在 HTTP 請求中
+  - 可以透過 Expires 標明失效時間，或 Max-Age 標明有效時間長度；  
+    沒有設置的話，預設是關閉瀏覽器之後失效。
+  - 存放的數據大小： 4KB 左右。
+  - 加上 HttpOnly， 可以避免 JavaScript 的 Document.cookie方法取得 HttpOnly cookies，HttpOnly cookies 只會被傳送到伺服器，此方法可以避免跨站腳本攻擊 (XSS)。
+- sessionStorage
+  - 在每次關閉該頁面、或是關閉瀏覽器後就會自動被清除。
+  - 5MB~10MB
+- localStorage
+  - 除非在用戶端被手動刪除，或是程式碼清除，否則將永久保存。
+  - 5MB~10MB
+
 ### 記憶體管理
 - 像 C 語言一樣低階的語言，都有著如 malloc() 跟 free() 的低階函式控管記憶體權限
 - 記憶體生命週期

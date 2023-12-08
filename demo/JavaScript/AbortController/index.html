@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AbortController</title>
+  </head>
+
+  <body>
+    <h1>AbortController</h1>
+
+    <p>測試時，可將網速調整為 fast 3G</p>
+
+    <div class="use-axios">
+      <button id="use-axios-fetch-data-button" type="button">
+        use-axios-fetch-data-button
+      </button>
+      <button id="use-axios-cancel-fetch-data-button" type="button">
+        use-axios-cancel-fetch-data-button
+      </button>
+    </div>
+
+    <div class="demo-1">
+      <p>點擊 cancel fetch data button 後，取消 demo-1 內的所有 fetch 請求</p>
+
+      <button type="button" id="fetchBtn1">fetch data button 1</button>
+      <button type="button" id="fetchBtn2">fetch data button 2</button>
+
+      <button type="button" id="cancelFetchBtn">
+        cancel fetch data button
+      </button>
+    </div>
+
+    <div class="demo-2">
+      <h2>demo 2</h2>
+      <p>點擊按鈕之後，會</p>
+      <div class="">
+        有沒有辦法每次送 request 的時候都自帶一個 abort controller instance?
+        應該是可以，但那個 instance 要怎麼傳出來共用？
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

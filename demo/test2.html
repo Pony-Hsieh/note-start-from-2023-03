@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test lodash chunk</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    編寫函數convert(money) ，傳入金額，將金額轉換為千分位表示法
+    <script>
+      // number.toLocaleString(locales, options)
+      // let text = num.toLocaleString("en-US", {style:"currency", currency:"USD"});
+
+      console.log(convert(123456));
+      function convert(money) {
+        let res = "";
+
+        if (typeof money !== "string" && typeof money !== "number") {
+          throw new Error("請傳入 string 或 number");
+        }
+        // if (typeof money === "number") {
+        //   money = money.toString();
+        // }
+
+        if (money.length <= 3) {
+          return money;
+        }
+        console.log(123);
+        return money.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        });
+
+        const splittedMoney = money.split("");
+        console.log(splittedMoney);
+
+        const resArr = [];
+
+        const res2 = splittedMoney.reduceRight((prev, curr, i, array) => {
+          // 不可被 3 整除
+          // 可被 3 整除
+          if (prev.length % 3 === 0) {
+          }
+          // console.log("previousValue", prev);
+          // console.log("currentValue", curr);
+          // console.log("index", i);
+          // console.log("array", array);
+          return prev + curr;
+        }, "");
+        console.log("res2", res2);
+        // previousValue、currentValue、index、array
+        // array.reduceRight( callbackfn [ , initialValue] )
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

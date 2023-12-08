@@ -92,6 +92,51 @@
   background-size: contain;
   background-size: cover;
   ```
+- 幾種水平垂直置中的做法
+  1. flex
+      ```css
+      .father {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .son {
+        ...
+      }
+      ```
+  2. 絕對定位搭配 margin: auto
+      ```css
+      .father {
+        position: relative;
+      }
+      .son {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+      ```
+  3. 絕對定位搭配 transform
+      ```css
+      .father {
+        position: relative;
+      }
+      .son {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      ```
+
+  
+
+
+  
+  
+  
 
 # 已開始找答案
 
