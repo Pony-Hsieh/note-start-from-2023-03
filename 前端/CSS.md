@@ -164,6 +164,7 @@
     - [渲染頁面：瀏覽器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
 
 - 回流 (Reflow) 和重繪 (Repaint) 是什麼？如何優化？
+  - 要減少回流和重繪的次數，首先要了解回流和重繪是如何被觸發的
 
 - BFC(Block Formatting Context) 是甚麼？
 
@@ -186,3 +187,7 @@
 - [SCSS 相關教學筆記](https://hackmd.io/@FortesHuang?tags=%5B%22Scss%22%5D)
 
 - [Sass / SCSS 預處理器 - 自建 CSS 框架中的 Grid System 與 Spacing](https://awdr74100.github.io/2020-06-24-scss-gridsystem-spacing/)
+- [淺談 Atomic CSS 的發展背景與 Tailwind CSS](https://blog.huli.tw/2022/05/23/atomic-css-and-tailwind-css/)
+  - 以前我在維護一個用 Redux 的專案時有一系列操作長很像，例如說 post、user 跟 restaurant 的 CRUD 之類的，程式碼有很大一部分都重複，因此我就寫了一個 utils 來處理共同邏輯，只要寫 generateActions('user')，就自動幫你動態產生出 readUser 與 createUser 之類的 actions。  
+  那時我想說這樣很讚，但同事提醒我說如果你這樣做，那全域搜尋 readUser 的時候就搜不到東西，因為那是程式動態產生的，在原始碼裡面找不到。  
+  雖然我那時不覺得有什麼，但過了兩個月後我知道我錯了。當你面對一個不熟悉的專案時，要去修一個 bug，最常做的就是拿你手上的資訊去搜尋原始碼，看看出現在哪邊。如果你搜不到東西，那是滿挫折的一件事情，會需要花更多時間去找問題到底在哪個範圍。因此，可以被搜尋到是很重要的。

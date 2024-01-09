@@ -1,0 +1,686 @@
+{
+    "root": {
+        "data": {
+            "id": "cy9y5ypq8tc0",
+            "created": 1704780257803,
+            "text": "面試題",
+            "expandState": "expand"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cy9y6x8pue80",
+                    "created": 1704780332962,
+                    "text": "網路",
+                    "expandState": "expand",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9y9gupt5s0",
+                            "created": 1704780532379,
+                            "text": "網址列輸入內容敲下 enter 後發生了什麼事？",
+                            "layout": null,
+                            "note": "/通用/網路相關.md\n網址列輸入內容敲下 enter 後發生了什麼事？",
+                            "hyperlink": null,
+                            "hyperlinkTitle": null,
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya0glmri5c0",
+                                    "created": 1704786733551,
+                                    "text": "解析網址列的輸入內容",
+                                    "layout": null,
+                                    "note": "- 判斷輸入內容是 URL 還是搜尋關鍵字\n\t- 輸入內容符合 URL 規則\n\t\t- 網址列會依照規則，把這段內容加上協議，合成完整的 URL\n\t- 其餘的會視為搜尋關鍵字，網址列會使用瀏覽器預設的搜尋引擎，合成新的搜尋關鍵字的 URL"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cya34cab0uw0",
+                                            "created": 1704794236166,
+                                            "text": "url 的結構是甚麼？"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0xci0a1k0",
+                                    "created": 1704788045863,
+                                    "text": "DNS 查詢",
+                                    "layout": null,
+                                    "note": "瀏覽器解析 URL 後，會提取出其中的域名部分，然後進行 DNS 查詢以將域名轉換為對應的 IP 地址。\nDNS 查詢是將域名映射到 IP 地址的過程，瀏覽器向本地 DNS 服務器發送查詢請求，本地 DNS 服務器會向根 DNS 服務器逐級查詢，直到找到目標域名對應的 IP 地址。一旦得到 IP 地址，瀏覽器就可以向服務器發送請求。"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0xeipgmw0",
+                                    "created": 1704788050259,
+                                    "text": "TCP 連線",
+                                    "layout": null,
+                                    "priority": null,
+                                    "note": "透過三次握手建立 TCP 連線"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0xgseesw0",
+                                    "created": 1704788055199,
+                                    "text": "HTTP 請求",
+                                    "layout": null,
+                                    "note": "當建立 TCP 連線之後，就可以在這基礎上進行通信，瀏覽器發送 HTTP 請求到目標服務器"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0xjyyqjc0",
+                                    "created": 1704788062126,
+                                    "text": "伺服器回應請求",
+                                    "layout": null,
+                                    "note": "當服務器接收到瀏覽器的請求之後，就會進行邏輯操作，處理完成之後回傳一個 HTTP 響應消息，包括：\n- 狀態行\n- 響應頭\n- 響應正文\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0xpud3ao0",
+                                    "created": 1704788074908,
+                                    "text": "瀏覽器渲染頁面",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cy9y9v538ts0",
+                            "created": 1704780563481,
+                            "text": "script, link 載入順序",
+                            "layout": null,
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cy9z4sflizk0",
+                                    "created": 1704782986875,
+                                    "text": "script",
+                                    "layout": null
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cy9z5k547540",
+                                            "created": 1704783047191,
+                                            "text": "<script>",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9z6ik9dig0",
+                                            "created": 1704783122118,
+                                            "text": "<script src=\"\">",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9z652wqu80",
+                                            "created": 1704783092770,
+                                            "text": "<script defer>",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9z66bulk80",
+                                            "created": 1704783095488,
+                                            "text": "<script async>",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9z66bulk80",
+                                            "created": 1704783095488,
+                                            "text": "<script type=\"module\">",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9z66bulk80",
+                                            "created": 1704783095488,
+                                            "text": "<script type=\"module\" async>",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cy9z4u86t5k0",
+                                    "created": 1704782990781,
+                                    "text": "link",
+                                    "note": "- 參考文章\n\t- [[教學] Preload, Prefetch 和 Preconnect 的差異](https://www.shubo.io/preload-prefetch-preconnect/)",
+                                    "expandState": "expand",
+                                    "layout": null
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cy9zfy81ky00",
+                                            "created": 1704783861485,
+                                            "text": "preload",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9zg2b5b800",
+                                            "created": 1704783870380,
+                                            "text": "prefetch",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cy9zg50wqq80",
+                                            "created": 1704783876291,
+                                            "text": "preconnect",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cy9y9qy8rz40",
+                            "created": 1704780554360,
+                            "text": "資安",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya1wibilf40",
+                                    "created": 1704790801277,
+                                    "text": "請解釋 JWT",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cya0o1ylcz40",
+                            "created": 1704787317644,
+                            "text": "RESTful API",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya12qk36gw0",
+                            "created": 1704788468285,
+                            "text": "比較 IPv4, IPv6",
+                            "layout": null
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cya01pp7lcw0",
+                    "created": 1704785566944,
+                    "text": "通訊協定",
+                    "expandState": "collapse",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cya0h4xwwdc0",
+                            "created": 1704786775584,
+                            "text": "比較 TCP, UDP",
+                            "note": "TCP: 準ㄑㄩㄝ\nUDP: 效率",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya0q0bn59s0",
+                            "created": 1704787470808,
+                            "text": "http",
+                            "expandState": "expand",
+                            "note": "HTTP 屬於 OSI 模型中的 Application Layer（應用層）（第 7 層），因為它將資料轉換成應用程式（如瀏覽器）無需進一步解釋即可直接使用的格式\n\n內容只規範了 客戶端請求 與 伺服器回應 的標準，**通常在傳輸層會藉由 TCP 作為資料的傳輸方式**",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya0ofv8v6o0",
+                                    "created": 1704787347917,
+                                    "text": "HTTP Request Method",
+                                    "layout": null
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0wsk405k0",
+                                    "created": 1704788002455,
+                                    "text": "HTTP headers",
+                                    "layout": null
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cy9zx1jvwy00",
+                                    "created": 1704785200922,
+                                    "text": "比較 http, https",
+                                    "layout": null,
+                                    "note": "- 預設 port\n　http: 80\n　https: 443\n- HTTPS 的加密原理是甚麼？\n\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0oy9bisg0",
+                                    "created": 1704787387950,
+                                    "text": "請解釋 HTTP caching 機制",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cya0qcmp2qw0",
+                            "created": 1704787497598,
+                            "text": "IP (Internet Protocol)",
+                            "note": "網路通訊協定(IP)是一組用於格式化和處理資料的規則，他就像是電腦的通用語言。  \n\n透過網路連結的電腦可能會使用完全不同的軟體和硬體；\n然而，使用通訊協定使它們能能彼此通訊。  \n\n**通訊協定通常與處理序在 OSI 模型中所屬的 layer 相關。**",
+                            "priority": null,
+                            "layout": null
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9zxn0f0340",
+                    "created": 1704785247634,
+                    "text": "瀏覽器",
+                    "expandState": "collapse",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9zvuz669c0",
+                            "created": 1704785108245,
+                            "text": "比較 cookie, session storage, local storage",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya0mxpm7t40",
+                            "created": 1704787230030,
+                            "text": "跨域",
+                            "expandState": "expand",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya0j1xjyqw0",
+                                    "created": 1704786925760,
+                                    "text": "Same-origin policy 同源政策",
+                                    "layout": null
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cya0m8r8kj40",
+                                            "created": 1704787175708,
+                                            "text": "怎樣算 \"非同源\"",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cya0mf67rc00",
+                                            "created": 1704787189675,
+                                            "text": "為什麼要有 same-origin policy 的存在？",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cya0n23tz680",
+                                    "created": 1704787239597,
+                                    "text": "CORS (Cross-Origin Resource Sharing) 跨來源資源共用",
+                                    "expandState": "expand",
+                                    "layout": null
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cya0vviy50w0",
+                                            "created": 1704787930551,
+                                            "text": "怎樣算是 \"簡單請求\"？",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cya0w5xdspc0",
+                                            "created": 1704787953191,
+                                            "text": "預檢請求 (Preflight Request)",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9yyeti1zk0",
+                    "created": 1704782487056,
+                    "text": "前端工程化",
+                    "expandState": "collapse",
+                    "note": "可以把框架想像成非常大規模的工程化",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9yyjh7ups0",
+                            "created": 1704782497197,
+                            "text": "容器技術",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cy9yyof0i3s0",
+                                    "created": 1704782507948,
+                                    "text": "Docker",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cy9yzccu9480",
+                            "created": 1704782560059,
+                            "text": "webpack",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cy9yzroqa740",
+                            "created": 1704782593430,
+                            "text": "vite",
+                            "layout": null
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9ywycub340",
+                    "created": 1704782372856,
+                    "text": "框架",
+                    "expandState": "collapse",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9yxc1xjfk0",
+                            "created": 1704782402671,
+                            "text": "Vue",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cy9zu1l0feg0",
+                                    "created": 1704784965898,
+                                    "text": "Vue 2 與 Vue 3 有甚麼主要的差異？這樣的差異帶來甚麼效果？",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cy9yxli37zk0",
+                            "created": 1704782423239,
+                            "text": "React",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cy9zukymio80",
+                            "created": 1704785008080,
+                            "text": "React 和 Vue 有甚麼主要的差異？",
+                            "layout": null
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9yxgjttjc0",
+                    "created": 1704782412461,
+                    "text": "效能優化",
+                    "layout": null,
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9z3k3grvs0",
+                            "created": 1704782890363,
+                            "text": "debounce 和 throttle 的差異為何",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cy9z3qy256g0",
+                            "created": 1704782905274,
+                            "text": "手寫 debounce, throttle",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya0288das00",
+                            "created": 1704785607284,
+                            "text": "有哪些優化網站效能的方式？",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya1slnqyag0",
+                                    "created": 1704790495090,
+                                    "text": "對於那些不需要立即執行的 script 進行非同步載入設置(標記為 async 或 defer)，以避免阻塞渲染。",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cya14hbmgcw0",
+                            "created": 1704788604910,
+                            "text": "前端可以透過哪些方式提升頁面載入速度？",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya1o6v0q8w0",
+                            "created": 1704790149423,
+                            "text": "Critical Rendering Path（關鍵渲染路徑）",
+                            "note": "關鍵渲染路徑是指瀏覽器從接收 HTML 、 CSS 和 JavaScript 檔案，到將這些檔案轉換成像素展示到螢幕上的這一系列步驟\n\n1. 建構 DOM Tree（解析 HTML）\n2. 建構CSSOM Tree（解析 CSS）\n3. 執行 JavaScript 程式碼（可能會修改 DOM / CSSOM ）\n4. 建立 Render Tree\n5. 佈局（計算元素的大小和位置）\n6. 繪製（像素化組件）\n\n優化關鍵渲染路徑就意味著確保以上每個步驟盡可能快速執行，從而縮短首次渲染的時間。",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cya1rjqb5wg0",
+                            "created": 1704790412528,
+                            "text": "使用 Chrome DevTools 的 Performance 標籤啟動一個效能記錄",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cya1rtyubco0",
+                                    "created": 1704790434811,
+                                    "text": "首次內容繪製（First Contentful Paint, FCP）",
+                                    "layout": null
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya1rucswtc0",
+                                    "created": 1704790435655,
+                                    "text": "首次有意義繪製（First Meaningful Paint, FMP）",
+                                    "layout": null
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cya1rvl8xzc0",
+                                    "created": 1704790438343,
+                                    "text": "可交互時間（Time to Interactive, TTI）",
+                                    "layout": null
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9yx3zy0o80",
+                    "created": 1704782385137,
+                    "text": "html",
+                    "layout": null,
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cy9zsz7nkkg0",
+                            "created": 1704784882372,
+                            "text": "瀏覽器是如何解析、渲染 html 檔的？",
+                            "layout": null
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cy9yxyq5c7c0",
+                    "created": 1704782452025,
+                    "text": "CSS",
+                    "layout": null
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "cy9yy0pbdvk0",
+                    "created": 1704782456328,
+                    "text": "JavaScript",
+                    "layout": null
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "cy9yy7b6m2g0",
+                    "created": 1704782470711,
+                    "text": "TypeScript",
+                    "layout": null
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "cya1wa4yamw0",
+                    "created": 1704790783466,
+                    "text": "其他",
+                    "layout": null
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
